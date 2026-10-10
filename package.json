@@ -1,15 +1,17 @@
 {
   "name": "apipractice",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "本管理APIの作成",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"何もテストが定義されていません。\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "yoichiro",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "swagger-ui-express": "^5.0.1"
   }
 }
