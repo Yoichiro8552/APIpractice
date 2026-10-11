@@ -15,5 +15,8 @@
   "dependencies": {
     "express": "^5.2.1",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10"
   }
 }
