@@ -22,6 +22,7 @@
           }
         }
       },
+
       "post": {
         "summary": "新しい本を追加する",
         "requestBody": {
@@ -45,7 +46,7 @@
         },
         "responses": {
           "201": {
-            "description": "新しい本が追加されました。",
+            "description": "新しい本のデータが追加されました。",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,11 +61,12 @@
             }
           },
           "400": {
-            "description": "データの入力が正しくありません。"
+            "description": "本のデータの入力が正しくありません。"
           }
         }
       }
     },
+
     "/books/{id}": {
       "put": {
         "summary": "指定されたIDの本のデータを更新する",
@@ -99,31 +101,43 @@
         },
         "responses": {
           "200": {
-            "description": "データの更新に成功しました。",
+            "description": "本のデータの更新ができました。",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "title": {
+                    "message": {
                       "type": "string"
                     },
-                    "author": {
-                      "type": "string"
+                    "book": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "author": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
               }
             }
           },
+          "400": {
+            "description": "タイトルと著者の入力が不正です。"
+          },
           "404": {
             "description": "指定されたIDの本が見つかりませんでした。"
           }
         }
       },
+
       "delete": {
         "summary": "指定されたIDの本のデータを削除する",
         "parameters": [

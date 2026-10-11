@@ -27,7 +27,10 @@ app.post('/books', (req, res) => {
 });
 
 app.put('/books/:id', (req, res) => {
-  const targetbook = book.find((onebook) => onebook.id === Number(req.params.id));
+  const id = req.params.id;
+  const targetbook = book.find((onebook) => onebook.id === Number(id));
+  const beforetitle = targetbook.title;
+  const beforeauthor = targetbook.author;
 
   if (!targetbook) {
     return res.status(404).json({ message: '本が見つかりません' });
@@ -42,19 +45,28 @@ app.put('/books/:id', (req, res) => {
   targetbook.title = title;
   targetbook.author = author;
 
-  res.json(targetbook);
+  const message = `IDが${id}でタイトルが「${beforetitle}」、著者が「${beforeauthor}」の本を、タイトルが「${targetbook.title}」、著者が「${targetbook.author}」の本に変更しました。`;
+
+  res.status(200).json({
+    message,
+    book: targetbook
+  });
 });
 
 app.delete('/books/:id', (req, res) => {
-  const targetbookIndex = book.findIndex((onebook) => onebook.id === Number(req.params.id));
+  const id = req.params.id;
+  const targetbookIndex = book.findIndex((onebook) => onebook.id === Number(id));
 
   if (targetbookIndex === -1) {
     return res.status(404).json({ message: '本が見つかりません' });
   }
 
-  book.splice(targetbookIndex, 1);
+  const deletedbook = book.splice(targetbookIndex, 1)[0];
+  const title = deletedbook.title;
+  const author = deletedbook.author;
+  const message = `IDが${id}の本のデータを削除しました。本のタイトルは「${title}」で著者は「${author}」です。`;
 
-  res.json({ message: '本が削除されました' });
+  res.status(200).json({ message });
 });
 
 app.listen(port, () => {

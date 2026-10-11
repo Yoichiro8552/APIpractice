@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: 依存関係をインストール
+        run: npm install
+
+      - name: prettierによるフォーマットのチェック
+        run: npm run format:check
+
+      - name: ESLintによるコード品質チェック
+        run: npm run lint
