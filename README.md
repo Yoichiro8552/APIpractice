@@ -53,20 +53,24 @@ http://localhost:3000/api-docs
 
 ### ４機能の利用方法
 - GET
+
 try it outを押して、Executeを押す。
 
 - POST
+  
 try it outを押す。
 titleとauthorを追加したい本のデータに変更する。
 Executeを押す。
 
 - PUT
+  
 try it outを押す。
 変更したい本のIDの数字を入力する。
 titleとauthorを変更したい本のデータに変更する。
 Executeを押す。
 
 - DELETE
+  
 try it outを押す。
 削除したい本のIDの数字を入力する。
 Executeを押す。
