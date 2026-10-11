@@ -1,6 +1,6 @@
 module.exports = [
   {
-    files: ['**/*.js'],
-    rules: {}
-  }
+    files: ["**/*.js"],
+    rules: {},
+  },
 ];
